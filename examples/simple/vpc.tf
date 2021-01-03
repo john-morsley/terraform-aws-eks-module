@@ -13,7 +13,7 @@ __      __  _____     _____
 //  source = "./../../../terraform-aws-vpc-module"
 //  #source = "john-morsley/vpc/aws"
 //
-//  name = "rancher"
+//  name = "eks-vpc"
 //
 //  vpc_cidr            = var.vpc_cidr
 //  public_subnet_cidrs = var.public_subnet_cidrs
@@ -23,20 +23,6 @@ __      __  _____     _____
 //  availability_zones = data.aws_availability_zones.available.names
 //
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
@@ -51,17 +37,17 @@ module "vpc" {
   enable_nat_gateway   = true
   single_nat_gateway   = true
   enable_dns_hostnames = true
-  enable_dns_support = true
+  enable_dns_support   = true
 
-    public_subnet_tags = {
-      "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-      "kubernetes.io/role/elb"                      = "1"
-    }
+  public_subnet_tags = {
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/elb"                    = "1"
+  }
 
-    private_subnet_tags = {
-      "kubernetes.io/cluster/${var.cluster_name}" = "shared"
-      "kubernetes.io/role/internal-elb"             = "1"
-    }
+  private_subnet_tags = {
+    "kubernetes.io/cluster/${var.cluster_name}" = "shared"
+    "kubernetes.io/role/internal-elb"           = "1"
+  }
 }
 
 

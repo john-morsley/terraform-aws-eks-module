@@ -34,11 +34,6 @@ terraform {
     //      version = ">= 3.0.0"
     //    }
     //
-    //    rke = {
-    //      source  = "rancher/rke"
-    //      version = ">= 1.1.6"
-    //    }
-    //
     //    tls = {
     //      source  = "hashicorp/tls"
     //      version = ">= 3.0.0"

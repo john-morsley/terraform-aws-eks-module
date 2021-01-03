@@ -18,54 +18,19 @@ variable "sub_domain_name" {
   type = string
 }
 
-
 variable "cidr_range" {
   type = string
 }
 
+variable "bucket_name" {
+  type = string
+}
 
-
-
-
-//variable "region" {
-//  default = "eu-west-2" # London
-//}
-//
-//
-//variable "public_subnet_one" {
-//  default = "172.31.0.2/24"
-//}
-//
-//variable "public_subnet_two" {
-//  default = "172.31.0.4/24"
-//}
-//
-//variable "public_subnet_three" {
-//  default = "172.31.0.6/24"
-//}
-//
-//variable "private_subnet_one" {
-//  default = "172.31.0.1/24"
-//}
-//
-//variable "private_subnet_two" {
-//  default = "172.31.0.3/24"
-//}
-//
-//variable "private_subnet_three" {
-//  default = "172.31.0.5/24"
-//}
-//
-//
 variable "map_accounts" {
   description = "Additional AWS account numbers to add to the aws-auth configmap."
   type        = list(string)
 
   default = []
-  //  default = [
-  //    "777777777777",
-  //    "888888888888",
-  //  ]
 }
 
 variable "map_roles" {
@@ -89,3 +54,24 @@ variable "map_users" {
 
   default = []
 }
+
+########################################################################################################################
+# NGINX INGRESS
+########################################################################################################################
+
+variable "ingress_nginx_helm_repository" {
+  type        = string
+  default     = "https://kubernetes.github.io/ingress-nginx"
+  description = "Helm chart to use for the NGINX Ingress install"
+}
+
+variable "ingress_nginx_helm_chart" {
+  type        = string
+  default     = "ingress-nginx"
+  description = "Helm chart to use for the NGINX Ingress install"
+}
+
+//variable "ingress_nginx_helm_version" {
+//  type        = string
+//  description = "Version of the NGINX Ingress to install."
+//}
