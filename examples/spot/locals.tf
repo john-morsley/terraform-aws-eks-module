@@ -12,8 +12,8 @@ locals {
 
   //all_cidr_block = "0.0.0.0/0" # All possible IP address range
 
-  bucket_prefix = length(var.bucket_prefix) == 0 ? "" : "${var.bucket_prefix}-"  
-  
+  bucket_prefix = length(var.bucket_prefix) == 0 ? "" : "${var.bucket_prefix}-"
+
   bucket_name = "${local.bucket_prefix}${var.cluster_name}-${random_pet.this.id}"
 
   //cluster_id_tag = {

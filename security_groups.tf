@@ -11,42 +11,42 @@
 
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
 
-resource "aws_security_group" "worker_group_management_small" {
-  name_prefix = "worker_group_management_small"
-  vpc_id      = var.vpc_id
-
-  //  ingress {
-  //    from_port = 22
-  //    to_port   = 22
-  //    protocol  = "tcp"
-  //
-  //    cidr_blocks = [
-  //      "10.0.0.0/8",
-  //    ]
-  //  }
-}
-
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
-
-resource "aws_security_group" "all_worker_management" {
-  name_prefix = "all_worker_management"
-  vpc_id      = var.vpc_id
-
-  //  ingress {
-  //    from_port = 22
-  //    to_port   = 22
-  //    protocol  = "tcp"
-  //
-  //    cidr_blocks = [
-  //      "10.0.0.0/8",
-  //      "172.16.0.0/12",
-  //      "192.168.0.0/16",
-  //    ]
-  //  }
-}
-
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
-
-resource "aws_security_group" "all_worker_traffic" {
-  vpc_id = var.vpc_id
-}
+//resource "aws_security_group" "worker_group_management_small" {
+//  name_prefix = "worker_group_management_small"
+//  vpc_id      = var.vpc_id
+//
+//  //  ingress {
+//  //    from_port = 22
+//  //    to_port   = 22
+//  //    protocol  = "tcp"
+//  //
+//  //    cidr_blocks = [
+//  //      "10.0.0.0/8",
+//  //    ]
+//  //  }
+//}
+//
+//# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+//
+//resource "aws_security_group" "all_worker_management" {
+//  name_prefix = "all_worker_management"
+//  vpc_id      = var.vpc_id
+//
+//  //  ingress {
+//  //    from_port = 22
+//  //    to_port   = 22
+//  //    protocol  = "tcp"
+//  //
+//  //    cidr_blocks = [
+//  //      "10.0.0.0/8",
+//  //      "172.16.0.0/12",
+//  //      "192.168.0.0/16",
+//  //    ]
+//  //  }
+//}
+//
+//# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group
+//
+//resource "aws_security_group" "all_worker_traffic" {
+//  vpc_id = var.vpc_id
+//}

@@ -79,39 +79,36 @@ module "cluster" {
   cluster_name    = var.cluster_name
   cluster_version = "1.18"
   //subnets         = module.vpc.private_subnets
-  subnets = var.public_subnet_ids
-
-  //  tags = {
-  //    Environment = "test"
-  //    GithubRepo  = "terraform-aws-eks"
-  //    GithubOrg   = "terraform-aws-modules"
-  //  }
-
+  subnets = var.public_subnet_ids // Hmmm, shouldn't this be private subnets!?
+  
   vpc_id = var.vpc_id
 
   # See the following for more details:
   # https://github.com/terraform-aws-modules/terraform-aws-eks/blob/master/local.tf
-  worker_groups = [
-    {
-      name          = "worker-group-small"
-      instance_type = "t2.small"
-      //additional_userdata           = "echo foo bar"
-      asg_min_size                  = 1
-      asg_desired_capacity          = 2
-      asg_max_size                  = 3
-      additional_security_group_ids = [aws_security_group.worker_group_management_small.id]
-      //      target_group_arns = [
-      //        aws_lb_target_group.http.arn,
-      //        aws_lb_target_group.https.arn
-      //      ]
-      public_ip = true
-    }
-  ]
+//  worker_groups = [
+//    {
+//      name          = "worker-group-small"
+//      instance_type = "t2.small"
+//      //additional_userdata           = "echo foo bar"
+//      asg_min_size                  = 1
+//      asg_desired_capacity          = 2
+//      asg_max_size                  = 3
+//      //additional_security_group_ids = [aws_security_group.worker_group_management_small.id]
+//      //      target_group_arns = [
+//      //        aws_lb_target_group.http.arn,
+//      //        aws_lb_target_group.https.arn
+//      //      ]
+//      public_ip = true
+//    }
+//  ]
 
-  worker_additional_security_group_ids = [
-    aws_security_group.all_worker_management.id,
-    aws_security_group.all_worker_traffic.id
-  ]
+  worker_groups = local.worker_groups
+  worker_groups_launch_template = local.worker_groups_launch_template
+  
+  //worker_additional_security_group_ids = [
+  //  aws_security_group.all_worker_management.id,
+  //  aws_security_group.all_worker_traffic.id
+  //]
   map_roles    = var.map_roles
   map_users    = var.map_users
   map_accounts = var.map_accounts

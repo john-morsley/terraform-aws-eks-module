@@ -13,7 +13,7 @@ module "vpc" {
   source = "./../../../terraform-aws-vpc-module"
   #source = "john-morsley/vpc/aws"
 
-  name = "eks-vpc"
+  name = "eks"
 
   vpc_cidr            = var.vpc_cidr
   public_subnet_cidrs = var.public_subnet_cidrs

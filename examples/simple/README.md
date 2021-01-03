@@ -1,4 +1,4 @@
-﻿# A Multiple Node cluster
+﻿# A Multiple Node cluster - With On-Demand Instances
 
 This is an example of a multiple node kubernetes cluster on AWS with an EKS (Elastic Kubernetes Service).
 

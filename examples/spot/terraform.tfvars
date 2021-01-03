@@ -21,20 +21,6 @@ public_subnet_cidrs  = ["10.0.2.0/24", "10.0.4.0/24", "10.0.6.0/24"]
 ########################################################################################################################
 
 cluster_name = "eks"
-//node_settings = [
-//  {
-//    role          = ["controlplane", "etcd", "worker"]
-//    instance_type = "t2.large"
-//  },
-//  {
-//    role          = ["controlplane", "etcd", "worker"]
-//    instance_type = "t2.large"
-//  },
-//  {
-//    role          = ["controlplane", "etcd", "worker"]
-//    instance_type = "t2.large"
-//  }
-//]
 node_group_settings = [
   {
     name          = "on-demand-1"
@@ -43,6 +29,23 @@ node_group_settings = [
     maximum_size  = 3
     type          = "on-demand"
     instance_type = "t2.xlarge"
+  },
+  {
+    name          = "spot-1"
+    minimum_size  = 3
+    desired_size  = 5
+    maximum_size  = 7
+    type          = "spot"
+    instance_type = "t3.xlarge"
+  }
+]
+node_group_spot_settings = [
+  {
+    name           = "spot-2"
+    minimum_size   = 1
+    desired_size   = 2
+    maximum_size   = 3
+    instance_types = ["m5.xlarge", "m5d.xlarge", "m5n.xlarge", "m5dn.xlarge", "m5a.xlarge", "m5ad.xlarge"]
   }
 ]
 bucket_prefix = "morsley-io"

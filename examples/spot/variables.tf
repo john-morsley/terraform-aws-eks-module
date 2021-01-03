@@ -32,32 +32,61 @@ variable "cluster_name" {
   type = string
 }
 
-//variable "node_settings" {
-//  type = list(
-//  object({
-//    role          = list(string)
-//    instance_type = string
-//  })
-//  )
-//}
-
 variable "node_group_settings" {
   type = list(
-  object({
-    name          = string
-    minimum_size  = number
-    desired_size  = number
-    maximum_size  = number
-    type          = string
-    instance_type = string
-  })
+    object({
+      name          = string
+      minimum_size  = number
+      desired_size  = number
+      maximum_size  = number
+      type          = string
+      instance_type = string
+    })
+  )
+}
+
+variable "node_group_spot_settings" {
+  type = list(
+    object({
+      name           = string
+      minimum_size   = number
+      desired_size   = number
+      maximum_size   = number
+      instance_types = list(string)
+    })
+  )
+}
+
+variable "map_accounts" {
+  description = "Additional AWS account numbers to add to the aws-auth configmap."
+  type        = list(string)
+}
+
+variable "map_roles" {
+  description = "Additional IAM roles to add to the aws-auth configmap."
+  type = list(
+    object({
+      rolearn  = string
+      username = string
+      groups   = list(string)
+    })
+  )
+}
+
+variable "map_users" {
+  description = "Additional IAM users to add to the aws-auth configmap."
+  type = list(
+    object({
+      userarn  = string
+      username = string
+      groups   = list(string)
+    })
   )
 }
 
 variable "bucket_prefix" {
   description = "An optional prefix for the bucket."
   type        = string
-  default     = ""
 }
 
 ########################################################################################################################
@@ -76,25 +105,3 @@ variable "domain" {
 
 
 
-variable "map_accounts" {
-  description = "Additional AWS account numbers to add to the aws-auth configmap."
-  type        = list(string)
-}
-
-variable "map_roles" {
-  description = "Additional IAM roles to add to the aws-auth configmap."
-  type = list(object({
-    rolearn  = string
-    username = string
-    groups   = list(string)
-  }))
-}
-
-variable "map_users" {
-  description = "Additional IAM users to add to the aws-auth configmap."
-  type = list(object({
-    userarn  = string
-    username = string
-    groups   = list(string)
-  }))
-}

@@ -41,3 +41,26 @@ output "load_balancer_zone_id" {
 output "cluster_id" {
   value = module.cluster.cluster_id
 }
+
+
+
+
+
+
+
+output "node_group_settings" {
+  value = var.node_group_settings
+}
+
+output "node_group_spot_settings" {
+  value = var.node_group_spot_settings
+}
+
+
+output "worker_groups" {
+  value = local.worker_groups
+}
+
+output "worker_groups_launch_template" {
+  value = local.worker_groups_launch_template
+}

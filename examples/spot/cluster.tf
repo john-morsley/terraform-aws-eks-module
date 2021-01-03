@@ -29,6 +29,7 @@ module "cluster" {
 
   bucket_name = module.s3_bucket.name
 
-  node_group_settings = var.node_group_settings
-  
+  node_group_settings      = var.node_group_settings
+  node_group_spot_settings = var.node_group_spot_settings
+
 }

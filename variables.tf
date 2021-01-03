@@ -1,20 +1,8 @@
-variable "cluster_name" {
-  type = string
-}
+########################################################################################################################
+# VPC
+########################################################################################################################
 
 variable "vpc_id" {
-  type = string
-}
-
-variable "public_subnet_ids" {
-  type = list(string)
-}
-
-variable "domain_name" {
-  type = string
-}
-
-variable "sub_domain_name" {
   type = string
 }
 
@@ -22,8 +10,43 @@ variable "cidr_range" {
   type = string
 }
 
-variable "bucket_name" {
+variable "public_subnet_ids" {
+  type = list(string)
+}
+
+########################################################################################################################
+# CLUSTER
+########################################################################################################################
+
+variable "cluster_name" {
   type = string
+}
+
+variable "node_group_settings" {
+  type = list(
+  object({
+    name = string
+    minimum_size  = number
+    desired_size  = number
+    maximum_size  = number
+    type = string
+    instance_type = string
+  })
+  )
+  default = []
+}
+
+variable "node_group_spot_settings" {
+  type = list(
+  object({
+    name = string
+    minimum_size  = number
+    desired_size  = number
+    maximum_size  = number
+    instance_types = list(string)
+  })
+  )
+  default = []
 }
 
 variable "map_accounts" {
@@ -53,6 +76,22 @@ variable "map_users" {
   }))
 
   default = []
+}
+
+variable "bucket_name" {
+  type = string
+}
+
+########################################################################################################################
+# DOMAIN
+########################################################################################################################
+
+variable "sub_domain_name" {
+  type = string
+}
+
+variable "domain_name" {
+  type = string
 }
 
 ########################################################################################################################
